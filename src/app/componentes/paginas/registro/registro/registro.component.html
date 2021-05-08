@@ -1,0 +1,49 @@
+<div class="row mt-4">
+    <h5>Complete su registro</h5>
+</div>
+<div class="row justify-content-center align-items-center ">
+    <div class="col-12 col-sm-6 col-md-4 mt-3">
+        <form id="formularioRegistro" #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)" ngNativeValidate>
+            <div class="row m-2 justify-content-center">
+                <div class="col-12 mb-2">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="family_name" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="family_name" name="family_name" [(ngModel)]="family_name" required>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" pattern="/^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/">
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="phone" class="form-label">Teléfono</label>
+                    <input type="number" class="form-control" id="phone" name="phone" [(ngModel)]="phone" maxlength="10">
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="program" class="form-label">Programa de interés</label>
+                    <select class="form-select" aria-label="Default select example" name="program" [(ngModel)]="program">
+                        <option *ngFor="let p of program_list" value="{{p['id']}}" >{{p['name']}}</option>
+                    </select>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="comment" class="form-label">Comentario</label>
+                    <textarea class="form-control" id="comment" rows="3" name="comment" [(ngModel)]="comment"></textarea>
+                </div>
+            </div>
+
+            <div class="row m-2 justify-content-center">
+                <div class="col-12 mb-2">
+                  <button id="guardarbutton" type="submit" name="guardar" class="btn btn-sm btn-primary" >
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="cargando"></span>
+                      Guardar
+                    </button>
+                </div>
+              </div>
+        </form>
+    </div>
+</div>
+
+
+
